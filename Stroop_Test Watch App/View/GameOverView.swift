@@ -1,0 +1,132 @@
+//
+//  GameOverView.swift
+//  Stroop_Test Watch App
+//
+//  Created by Pedro Santos on 14/08/26.
+//
+
+import SwiftUI
+import SwiftData
+
+struct GameOverView: View {
+    @Environment(\.modelContext) private var context
+    @Environment(\.dismiss) private var dismiss
+    
+    // Buscando o recorde automaticamente do banco de dados!
+    @Query private var highScores: [HighScore]
+    
+    var userState: UserState
+    var gameEngine: GameEngine
+    
+    // Variável para nossa animação de pulso
+    @State private var animateScale = false
+    
+    var body: some View {
+        ZStack {
+            // 1. Fundo Premium: Um degradê radial vermelho escuro no centro sumindo pro preto
+            RadialGradient(
+                gradient: Gradient(colors: [Color.red.opacity(0.4), Color.black]),
+                center: .center,
+                startRadius: 10,
+                endRadius: 100
+            )
+            .ignoresSafeArea()
+            
+            VStack(spacing: 4) {
+                
+                Spacer()
+                
+                // 2. Ícone com Animação de Batimento
+                Image(systemName: "xmark.octagon.fill")
+                    .font(.system(size: 26))
+                    .foregroundColor(.red)
+                    .shadow(color: .red.opacity(0.8), radius: animateScale ? 5 : 0)
+                    .scaleEffect(animateScale ? 1.1 : 0.9)
+                    .animation(.easeInOut(duration: 0.8).repeatForever(autoreverses: true), value: animateScale)
+                
+                // 3. Título com Sombra
+                Text("GAME OVER")
+                    .font(.system(size: 16, weight: .black, design: .rounded))
+                    .foregroundColor(.white)
+                    .tracking(1.5) // Deixa as letras um pouco mais espaçadas
+                
+                // 4. Placar em Destaque
+                HStack(alignment: .lastTextBaseline, spacing: 2) {
+                    Text("\(userState.score)")
+                        .font(.system(size: 38, weight: .heavy, design: .rounded))
+                        .foregroundColor(.yellow)
+                    Text("pts")
+                        .font(.system(size: 12, weight: .bold, design: .rounded))
+                        .foregroundColor(.white.opacity(0.8))
+                }
+                
+                // 5. Exibindo o Recorde com @Query
+                if let melhor = highScores.first?.bestScore {
+                    // Usamos o max() para caso o jogador tenha acabado de bater o recorde
+                    Text("Recorde: \(max(melhor, userState.score))")
+                        .font(.system(size: 11, weight: .semibold, design: .rounded))
+                        .foregroundColor(.white.opacity(0.5))
+                }
+                
+                Spacer()
+                
+                // 6. Botões Modernos "Glassmorphism"
+                HStack(spacing: 8) {
+                    
+                    // Botão de Menu (Home)
+                    Button(action: {
+                        dismiss() // Fecha a tela atual e volta pro menu principal
+                    }) {
+                        Image(systemName: "house.fill")
+                            .font(.system(size: 16))
+                            .frame(width: 44, height: 44)
+                            .background(Color.white.opacity(0.15))
+                            .cornerRadius(14)
+                            .overlay(
+                                RoundedRectangle(cornerRadius: 14)
+                                    .stroke(Color.white.opacity(0.3), lineWidth: 1)
+                            )
+                    }
+                    .buttonStyle(.plain)
+                    
+                    // Botão Tentar de Novo
+                    Button(action: {
+                        userState.score = 0
+                        userState.startGame()
+                        gameEngine.generateRound()
+                    }) {
+                        HStack(spacing: 4) {
+                            Image(systemName: "arrow.counterclockwise")
+                                .font(.system(size: 14, weight: .bold))
+                            Text("REPETIR")
+                                .font(.system(size: 14, weight: .black, design: .rounded))
+                        }
+                        .frame(maxWidth: .infinity, maxHeight: 44)
+                        .background(Color.white.opacity(0.15))
+                        .cornerRadius(14)
+                        .overlay(
+                            RoundedRectangle(cornerRadius: 14)
+                                .stroke(Color.white.opacity(0.3), lineWidth: 1)
+                        )
+                    }
+                    .buttonStyle(.plain)
+                }
+                .padding(.horizontal, 10)
+                .padding(.bottom, 5)
+            }
+        }
+        .onAppear {
+            // Dispara a animação
+            animateScale = true
+            
+            // Salva o novo recorde no banco
+            let repo = HighScoreRepository(context: context)
+            repo.updateHighScore(newScore: userState.score)
+        }
+    }
+}
+
+#Preview {
+    // Apenas para o preview não quebrar sem um banco de dados falso
+    GameOverView(userState: UserState(), gameEngine: GameEngine(userState: UserState()))
+}

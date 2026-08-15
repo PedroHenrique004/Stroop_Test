@@ -6,3 +6,19 @@
 //
 
 import Foundation
+import SwiftData
+
+/// Guarda o recorde pessoal do jogador.
+/// Esta entidade será persistida localmente para manter a maior pontuação alcançada.
+///
+@Model
+class HighScore {
+    
+    var bestScore: Int
+    var achievedAt: Date
+    
+    init(bestScore: Int, achievedAt: Date) {
+        self.bestScore = bestScore
+        self.achievedAt = achievedAt
+    }
+}

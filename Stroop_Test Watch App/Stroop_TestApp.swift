@@ -6,12 +6,14 @@
 //
 
 import SwiftUI
+import SwiftData
 
 @main
 struct Stroop_Test_Watch_AppApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            StartGame()
         }
+        .modelContainer(for: HighScore.self)
     }
 }

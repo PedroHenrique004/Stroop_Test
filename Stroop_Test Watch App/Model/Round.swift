@@ -6,3 +6,11 @@
 //
 
 import Foundation
+
+struct Round {
+    
+    var difficulty: Int
+    var roundColors: [GameColor]
+    var wordColor: GameColor
+    var rightOption: GameColor
+}
