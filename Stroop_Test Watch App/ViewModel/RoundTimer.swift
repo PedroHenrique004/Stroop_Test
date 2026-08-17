@@ -12,7 +12,9 @@ import SwiftUI
 /// Dispara um evento de "tempo esgotado" caso o jogador não toque a tempo.
 @Observable
 class RoundTimer {
+    
     var secondsRemaining: Double = 0.0
+    
     var timeIsOver: Bool = false
     
     private var timer: Timer?

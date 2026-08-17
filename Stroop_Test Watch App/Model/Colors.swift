@@ -11,17 +11,17 @@ import SwiftUI
 /// Paleta fixa de 12 cores usadas no jogo.
 struct GameColors {
     static let all: [GameColor] = [
-        GameColor(name: "Vermelho", color: .red),
-        GameColor(name: "Azul", color: .blue),
-        GameColor(name: "Verde", color: .green),
-        GameColor(name: "Amarelo", color: .yellow),
-        GameColor(name: "Laranja", color: .orange),
-        GameColor(name: "Roxo", color: .purple),
-        GameColor(name: "Rosa", color: .pink),
-        GameColor(name: "Marrom", color: .brown),
-        GameColor(name: "Ciano", color: .cyan),
-        GameColor(name: "Cinza", color: .gray),
-        GameColor(name: "Menta", color: .mint),
-        GameColor(name: "Índigo", color: .indigo)
+        GameColor(name: String(localized: "Vermelho"), color: .red),
+        GameColor(name: String(localized: "Azul"), color: .blue),
+        GameColor(name: String(localized: "Verde"), color: .green),
+        GameColor(name: String(localized: "Amarelo"), color: .yellow),
+        GameColor(name: String(localized: "Laranja"), color: .orange),
+        GameColor(name: String(localized: "Roxo"), color: .purple),
+        GameColor(name: String(localized: "Rosa"), color: .pink),
+        GameColor(name: String(localized: "Marrom"), color: .brown),
+        GameColor(name: String(localized: "Ciano"), color: .cyan),
+        GameColor(name: String(localized: "Cinza"), color: .gray),
+        GameColor(name: String(localized: "Menta"), color: .mint),
+        GameColor(name: String(localized: "Índigo"), color: .indigo)
     ]
 }

@@ -15,7 +15,7 @@ struct PlayingView: View {
         VStack(spacing: 8) {
             
             HStack {
-                Text("Score: \(userState.score)")
+                Text("Pontos: \(userState.score)")
                     .font(.system(size: 14, weight: .bold, design: .rounded))
                     .foregroundColor(.white)
                 
