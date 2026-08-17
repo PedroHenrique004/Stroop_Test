@@ -41,7 +41,7 @@ class GameEngine {
         guard let round = currentRound else { return }
         
 
-        if selectedColor.id == round.rightOption.id {
+        if selectedColor.id == round.wordColor.id {
             userState.addScore()
             generateRound()
             
