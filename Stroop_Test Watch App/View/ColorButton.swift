@@ -18,5 +18,6 @@ struct ColorButton: View {
                 .frame(maxWidth: .infinity, maxHeight: 40)
         }
         .buttonStyle(.plain)
+        .accessibilityIdentifier("ColorButton_\(gameColor.name)")
     }
 }

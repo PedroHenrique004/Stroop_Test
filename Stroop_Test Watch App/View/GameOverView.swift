@@ -78,6 +78,7 @@ struct GameOverView: View {
                             )
                     }
                     .buttonStyle(.plain)
+                    .accessibilityIdentifier("HomeButton")
                     
                     Button(action: {
                         userState.score = 0
