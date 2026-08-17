@@ -12,18 +12,15 @@ struct GameOverView: View {
     @Environment(\.modelContext) private var context
     @Environment(\.dismiss) private var dismiss
     
-    // Buscando o recorde automaticamente do banco de dados!
     @Query private var highScores: [HighScore]
     
     var userState: UserState
     var gameEngine: GameEngine
     
-    // Variável para nossa animação de pulso
     @State private var animateScale = false
     
     var body: some View {
         ZStack {
-            // 1. Fundo Premium: Um degradê radial vermelho escuro no centro sumindo pro preto
             RadialGradient(
                 gradient: Gradient(colors: [Color.red.opacity(0.4), Color.black]),
                 center: .center,
@@ -36,7 +33,6 @@ struct GameOverView: View {
                 
                 Spacer()
                 
-                // 2. Ícone com Animação de Batimento
                 Image(systemName: "xmark.octagon.fill")
                     .font(.system(size: 26))
                     .foregroundColor(.red)
@@ -44,13 +40,11 @@ struct GameOverView: View {
                     .scaleEffect(animateScale ? 1.1 : 0.9)
                     .animation(.easeInOut(duration: 0.8).repeatForever(autoreverses: true), value: animateScale)
                 
-                // 3. Título com Sombra
                 Text("GAME OVER")
                     .font(.system(size: 16, weight: .black, design: .rounded))
                     .foregroundColor(.white)
-                    .tracking(1.5) // Deixa as letras um pouco mais espaçadas
+                    .tracking(1.5)
                 
-                // 4. Placar em Destaque
                 HStack(alignment: .lastTextBaseline, spacing: 2) {
                     Text("\(userState.score)")
                         .font(.system(size: 38, weight: .heavy, design: .rounded))
@@ -60,9 +54,7 @@ struct GameOverView: View {
                         .foregroundColor(.white.opacity(0.8))
                 }
                 
-                // 5. Exibindo o Recorde com @Query
                 if let melhor = highScores.first?.bestScore {
-                    // Usamos o max() para caso o jogador tenha acabado de bater o recorde
                     Text("Recorde: \(max(melhor, userState.score))")
                         .font(.system(size: 11, weight: .semibold, design: .rounded))
                         .foregroundColor(.white.opacity(0.5))
@@ -70,12 +62,10 @@ struct GameOverView: View {
                 
                 Spacer()
                 
-                // 6. Botões Modernos "Glassmorphism"
                 HStack(spacing: 8) {
                     
-                    // Botão de Menu (Home)
                     Button(action: {
-                        dismiss() // Fecha a tela atual e volta pro menu principal
+                        dismiss()
                     }) {
                         Image(systemName: "house.fill")
                             .font(.system(size: 16))
@@ -89,7 +79,6 @@ struct GameOverView: View {
                     }
                     .buttonStyle(.plain)
                     
-                    // Botão Tentar de Novo
                     Button(action: {
                         userState.score = 0
                         userState.startGame()
@@ -116,10 +105,7 @@ struct GameOverView: View {
             }
         }
         .onAppear {
-            // Dispara a animação
             animateScale = true
-            
-            // Salva o novo recorde no banco
             let repo = HighScoreRepository(context: context)
             repo.updateHighScore(newScore: userState.score)
         }
