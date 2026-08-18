@@ -564,7 +564,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "dev.PedroSantos.Stroop-Test.watchkitapp";
+				PRODUCT_BUNDLE_IDENTIFIER = "dev.pedrosantos.stroop-test.watchkitapp";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
@@ -597,7 +597,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "dev.PedroSantos.Stroop-Test.watchkitapp";
+				PRODUCT_BUNDLE_IDENTIFIER = "dev.pedrosantos.stroop-test.watchkitapp";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
@@ -622,7 +622,7 @@
 				INFOPLIST_KEY_CFBundleDisplayName = Stroop_Test;
 				IPHONEOS_DEPLOYMENT_TARGET = 26.0;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "dev.PedroSantos.Stroop-Test";
+				PRODUCT_BUNDLE_IDENTIFIER = "dev.pedrosantos.stroop-test";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
 				SWIFT_APPROACHABLE_CONCURRENCY = YES;
@@ -640,7 +640,7 @@
 				INFOPLIST_KEY_CFBundleDisplayName = Stroop_Test;
 				IPHONEOS_DEPLOYMENT_TARGET = 26.0;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "dev.PedroSantos.Stroop-Test";
+				PRODUCT_BUNDLE_IDENTIFIER = "dev.pedrosantos.stroop-test";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
 				SWIFT_APPROACHABLE_CONCURRENCY = YES;
