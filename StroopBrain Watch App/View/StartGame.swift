@@ -31,7 +31,7 @@ struct StartGame: View {
                             }
                         }
                         
-                        Text("TEST")
+                        Text("BRAIN")
                             .font(.system(size: 24, weight: .black, design: .rounded))
                             .foregroundColor(.white)
                             .opacity(0.9)
