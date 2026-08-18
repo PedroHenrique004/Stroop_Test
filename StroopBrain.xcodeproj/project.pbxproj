@@ -469,7 +469,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = dev.pedrosantos.stroopbrain;
+				PRODUCT_BUNDLE_IDENTIFIER = dev.pedrosantos.stroopbrain.watchkitapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
@@ -502,7 +502,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = dev.pedrosantos.stroopbrain;
+				PRODUCT_BUNDLE_IDENTIFIER = dev.pedrosantos.stroopbrain.watchkitapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
@@ -525,6 +525,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = HG54MS3295;
 				INFOPLIST_KEY_CFBundleDisplayName = StroopBrain;
+				IPHONEOS_DEPLOYMENT_TARGET = 26.0;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = dev.pedrosantos.stroopbrain;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -542,6 +543,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = HG54MS3295;
 				INFOPLIST_KEY_CFBundleDisplayName = StroopBrain;
+				IPHONEOS_DEPLOYMENT_TARGET = 26.0;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = dev.pedrosantos.stroopbrain;
 				PRODUCT_NAME = "$(TARGET_NAME)";
